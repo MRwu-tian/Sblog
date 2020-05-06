@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.UserInfoMapper">
+
+    <select id="getAllUserInfo" resultType="userInfo">
+        select * from tb_userinfo where id=#{id}
+    </select>
+
+    <update id="addurl" >
+        update tb_userinfo set userPictureIndex=#{url}
+    </update>
+
+    <update id="updateUserInfo" parameterType="userInfo">
+        update tb_userinfo set
+              username=#{username},
+              userPassword=#{userPassword},
+              userGender=#{userGender},
+              userBirthday=#{userBirthday},
+              userPosition=#{userPosition},
+              userEducation=#{userEducation},
+              userSynopsis=#{userSynopsis},
+              userShool=#{userShool}
+
+    </update>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.LoginMapper">
+    <select id="findUserByUsername" resultType="org.example.bean.Users">
+        SELECT u.id,u.userSerial,u.userPassword,r.roleName,u.username,u.userPictureIndex
+        FROM tb_userinfo u,
+             tb_roleinfo r
+        WHERE u.role = r.id
+          AND u.userSerial = #{userSerial}
+    </select>
+
+    <select id="register" resultType="int">
+        select count(0) from tb_userinfo where userSerial = #{regname}
+    </select>
+
+    <insert id="editReg">
+        insert into tb_userinfo (userSerial,username,userPassword,role)
+        values (#{regname},#{username},#{regpassword},2)
+    </insert>
+
+</mapper>
